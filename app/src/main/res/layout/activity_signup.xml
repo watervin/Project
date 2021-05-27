@@ -1,45 +1,59 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_vertical"
-    tools:context=".SignupActivity">
+    tools:context=".LoginActivity"
+    android:layout_margin="30dp">
+    <ImageView
+        android:id="@+id/buttonBack"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_arrow_back" />
 
-    <EditText
-        android:id="@+id/sign_email"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@null"
-        android:layout_margin="8dp"
-        android:hint="E-mail" />
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#004593"
+            android:layout_gravity="center"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:text="방구석 장터"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#8BC339"
+            android:textStyle="bold"
+            android:paddingTop="15dp"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:text="Create your account!"/>
+        <include layout="@layout/sinppest_login_email_center" />
+        <include layout="@layout/sinppest_login_id" />
+        <include layout="@layout/sinppest_login_name" />
+        <include layout="@layout/sinppest_login_password_center" />
+        <include layout="@layout/sinppest_login_nickname" />
+        <include layout="@layout/sinppest_login_school" />
+        <Button
+            android:id="@+id/login_join"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="15dp"
+            android:backgroundTint="#8BC339"
+            android:stateListAnimator="@null"
+            android:text="Sign up"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF" />
 
-    <EditText
-        android:id="@+id/sign_nick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:layout_margin="8dp"
-        android:hint="Nickname" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/sign_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:layout_margin="8dp"
-        android:inputType="textPassword"
-        android:hint="Password" />
-
-    <Button
-        android:id="@+id/sign_success"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:gravity="end"
-        android:text="Sign Up"
-        android:layout_marginRight="8dp" />
-
-
-</LinearLayout>
+</RelativeLayout>

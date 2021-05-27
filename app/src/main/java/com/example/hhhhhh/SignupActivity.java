@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import android.widget.Button;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -19,33 +19,40 @@ import com.google.firebase.firestore.SetOptions;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SignupActivity extends AppCompatActivity implements View.OnClickListener{
+public class SignupActivity extends AppCompatActivity  {
 
     private FirebaseAuth Auth = FirebaseAuth.getInstance();
     private FirebaseFirestore store = FirebaseFirestore.getInstance();
-    private EditText Email, Nickname, Password;
-
+    private EditText Email, Nickname, Password, ID, Name, Join, School;
+    private Button Joinbtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        Email = findViewById(R.id.sign_email);
-        Nickname = findViewById(R.id.sign_nick);
-        Password = findViewById(R.id.sign_password);
-
-        findViewById(R.id.sign_success).setOnClickListener(this);
+        Email = findViewById(R.id.login_email);
+        Nickname = findViewById(R.id.login_nickname);
+        Password = findViewById(R.id.login_password);
+        ID = findViewById(R.id.login_id);
+        Name = findViewById(R.id.login_name);
+        School = findViewById(R.id.login_school);
+        Joinbtn = findViewById(R.id.login_join);
+        Joinbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "회원가입완료", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
-    @Override
-    public void onClick(View v) {
+   /* public void onClick(View v) {
         Auth.createUserWithEmailAndPassword(Email.getText().toString(), Password.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = Auth.getCurrentUser();
-                            if (user != null){
+                            if (user != null) {
                                 Map<String, Object> userMap = new HashMap<>();
                                 userMap.put(FirebaseID.documentID, user.getUid());
                                 userMap.put(FirebaseID.email, Email.getText().toString());
@@ -63,5 +70,5 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
                     }
                 });
-    }
+    }*/
 }
