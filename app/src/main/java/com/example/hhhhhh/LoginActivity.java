@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -15,13 +16,17 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.w3c.dom.Text;
+
 import static com.example.hhhhhh.FirebaseID.email;
 import static com.example.hhhhhh.FirebaseID.password;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+public class LoginActivity extends AppCompatActivity  {
 
     private EditText Email, Password;
+    private TextView Find;
     private FirebaseAuth Auth = FirebaseAuth.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,13 +34,35 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         Email = findViewById(R.id.login_email);
         Password = findViewById(R.id.login_password);
+        Find = findViewById(R.id.FindPassword);
+        TextView loginsuccess = findViewById(R.id.login_success);
+        TextView loginsignup = findViewById(R.id.login_signup);
+        loginsuccess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
 
-        findViewById(R.id.login_success).setOnClickListener(this);
-        findViewById(R.id.login_signup).setOnClickListener(this);
+            }
+        });
+        loginsignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
+                startActivity(intent);
+            }
+        });
+        Find.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), FindActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
-    @Override
+    /*@Override
     protected void onStart() {
         super.onStart();
         FirebaseUser user = Auth.getCurrentUser();
@@ -43,6 +70,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             startActivity(new Intent(this, MainActivity.class));
         }
     }
+
 
     @Override
     public void onClick(View v) {
@@ -74,5 +102,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
         }
-    }
+    }*/
 }

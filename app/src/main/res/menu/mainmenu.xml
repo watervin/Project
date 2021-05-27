@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_1"
+        android:icon="@drawable/help"
+        android:title="도와줘요" />
+
+    <item
+        android:id="@+id/navigation_2"
+        android:icon="@drawable/join"
+        android:title="같이해요" />
+
+    <item
+        android:id="@+id/navigation_3"
+        android:icon="@drawable/trade"
+        android:title="거래해요" />
+
+    <item
+        android:id="@+id/navigation_4"
+        android:icon="@drawable/info"
+        android:title="공유해요" />
+
+
+    <item
+        android:id="@+id/navigation_5"
+        android:icon="@drawable/user"
+        android:title="마이페이지" />
+
+</menu>
