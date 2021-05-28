@@ -62,7 +62,7 @@
         android:layout_gravity="center"
         android:fontFamily="sans-serif-condensed-medium"
         android:gravity="center"
-        android:text="내 프로필 사진"
+        android:text="회원정보 변경"
         android:textSize="12sp"
         android:textStyle="bold" />
 
@@ -82,7 +82,7 @@
         android:layout_height="11dp"
         android:layout_weight="2"
         android:background="#72FDD835"
-        android:text="내 평판"
+        android:text="내가 쓴 글"
         android:textSize="18sp"
         android:textStyle="bold" />
 

@@ -59,13 +59,21 @@ public class Fragment5 extends Fragment {
     public String mail;
 
     private FirebaseAuth Auth = FirebaseAuth.getInstance();
-    FirebaseUser user = Auth.getCurrentUser();
 
 
+    public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        user.getEmail(); // 사용자 이메일
+        user.getUid();    // 사용자 UID
+    }
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_5, container, false);
         textView =v.findViewById(R.id.name);
+
+        FirebaseUser user = Auth.getCurrentUser();
+        textView.setText(user.getEmail());
+
         Button edit = v.findViewById(R.id.edit);
         edit.setOnClickListener(v1 -> {
             Intent intent = new Intent(getActivity(), myedit.class);
@@ -168,27 +176,13 @@ public class Fragment5 extends Fragment {
     }
 */
 
-    public void getUserProfile() {
-        // [START get_user_profile]
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            // Name, email address, and profile photo Url
-            String name = user.getDisplayName();
-            String email = user.getEmail();
-            Uri photoUrl = user.getPhotoUrl();
-            textView.setText(user.getEmail());
-
-            // Check if user's email is verified
-            boolean emailVerified = user.isEmailVerified();
-
-            // The user's ID, unique to the Firebase project. Do NOT use this value to
-            // authenticate with your backend server, if you have one. Use
-            // FirebaseUser.getIdToken() instead.
-            String uid = user.getUid();
-        }
 
 
-    }
+
+
+
+
+
 
 
 }
