@@ -37,7 +37,6 @@
             android:textSize="20sp"
             android:text="Create your account!"/>
         <include layout="@layout/sinppest_login_email_center" />
-        <include layout="@layout/sinppest_login_id" />
         <include layout="@layout/sinppest_login_name" />
         <include layout="@layout/sinppest_login_password_center" />
         <include layout="@layout/sinppest_login_nickname" />

@@ -14,12 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
-import org.w3c.dom.Text;
-
-import static com.example.hhhhhh.FirebaseID.email;
-import static com.example.hhhhhh.FirebaseID.password;
 
 public class LoginActivity extends AppCompatActivity  {
 
@@ -40,9 +35,21 @@ public class LoginActivity extends AppCompatActivity  {
         loginsuccess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-
+                String StrEmail = Email.getText().toString().trim();
+                String StrPW = Password.getText().toString().trim();
+                Auth.signInWithEmailAndPassword(StrEmail, StrPW)
+                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {//성공했을때
+                                    Toast.makeText(LoginActivity.this, "Login complete!", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(intent);
+                                } else {//실패했을때
+                                    Toast.makeText(LoginActivity.this, "Login error", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
             }
         });
         loginsignup.setOnClickListener(new View.OnClickListener() {
