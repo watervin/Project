@@ -13,6 +13,7 @@
         android:background="@drawable/round_input1"
         android:weightSum="10"
         >
+
         <TextView
             android:id="@+id/LoginEmail"
             android:layout_width="0dp"
