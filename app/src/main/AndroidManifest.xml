@@ -9,11 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hhhhhh">
+        <activity android:name="reputa"></activity>
+        <activity android:name=".lasttrans"></activity>
+        <activity android:name="meeting"></activity>
+        <activity android:name="setting"></activity>
+        <activity android:name=".myedit"></activity>
         <activity android:name=".FindActivity"></activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".SplashActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

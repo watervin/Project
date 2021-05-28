@@ -5,4 +5,5 @@
     <item name="btn_last" type="id" />
     <item name="btn_meet" type="id" />
     <item name="btn_setting" type="id" />
+    <item name="local" type="id" />
 </resources>
