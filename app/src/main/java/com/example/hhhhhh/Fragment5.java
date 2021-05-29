@@ -28,6 +28,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.auth.User;
 
 /*
 import com.google.firebase.database.DataSnapshot;
@@ -46,7 +52,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-
+import static com.example.hhhhhh.FirebaseID.email;
 
 
 public class Fragment5 extends Fragment {
@@ -54,25 +60,71 @@ public class Fragment5 extends Fragment {
     static final int REQUEST_CODE = 1;
     private ImageView imageView;
     private String uid = null;
-    private TextView textView;
+    private TextView textView,textView2;
     private EditText Email, Password;
     public String mail;
+    private DatabaseReference mDatabase;
 
     private FirebaseAuth Auth = FirebaseAuth.getInstance();
+    DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
 
+
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+    FirebaseDatabase database;
+    DatabaseReference myRef;
 
     public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         user.getEmail(); // 사용자 이메일
         user.getUid();    // 사용자 UID
     }
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_5, container, false);
-        textView =v.findViewById(R.id.name);
+        //realtime base
 
+
+
+        View v = inflater.inflate(R.layout.fragment_5, container, false);
+        textView =v.findViewById(R.id.name);   //이메일 읽기
         FirebaseUser user = Auth.getCurrentUser();
         textView.setText(user.getEmail());
+
+        //별명 가져오기가 안됨.....
+        textView2 =v.findViewById(R.id.collage);
+        String uid = user != null ? user.getUid() : null; // 로그인한 유저의 고유 uid 가져오기
+        mDatabase = FirebaseDatabase.getInstance().getReference("users"); // 파이어베이스 realtime database 에서 정보 가져오기
+        DatabaseReference Nickname = mDatabase.child("Nickname");    // 닉네임
+        Nickname.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String name = snapshot.getValue(String.class);
+                textView2.setText(name);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
+
+
+/*
+        myRef = FirebaseDatabase.getInstance().getReference("UserInfo");
+        DatabaseReference name = myRef.child("Name").child(School);
+        name.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String text = snapshot.getValue(String.class);
+                textView2.setText(text);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        //데베 읽기
+*/
 
         Button edit = v.findViewById(R.id.edit);
         edit.setOnClickListener(v1 -> {
@@ -110,6 +162,9 @@ public class Fragment5 extends Fragment {
             Intent intent4 = new Intent(getActivity(), setting.class);
             startActivity(intent4);
         });
+
+
+
 
         return v;
     }

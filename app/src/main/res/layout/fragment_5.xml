@@ -10,6 +10,16 @@
     android:orientation="vertical"
     android:padding="6dp">
 
+    <TextView
+        android:id="@+id/mypage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:text="마이페이지"
+        android:textColor="#A5D6A7"
+        android:textSize="34sp" />
 
     <Space
         android:layout_width="match_parent"
@@ -45,15 +55,6 @@
         android:orientation="horizontal"
         android:text="가천대학교" />
 
-    <TextView
-        android:id="@+id/level"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:gravity="center|clip_vertical|center_horizontal"
-        android:orientation="horizontal"
-        android:text="레벨" />
-
 
     <Button
         android:id="@+id/edit"
@@ -63,8 +64,10 @@
         android:fontFamily="sans-serif-condensed-medium"
         android:gravity="center"
         android:text="회원정보 변경"
+        android:textColor="@color/black"
         android:textSize="12sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:backgroundTint="#BBDEFB" />
 
     <Space
         android:layout_width="match_parent"
@@ -78,13 +81,17 @@
 
     <Button
         android:id="@+id/btn_reputa"
+        style="@style/Theme.Hhhhhh"
         android:layout_width="match_parent"
         android:layout_height="11dp"
         android:layout_weight="2"
-        android:background="#72FDD835"
+        android:background="#FDBA35"
         android:text="내가 쓴 글"
+        android:textColor="@color/black"
+        android:textColorHint="#FFFFFF"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:backgroundTint="#FFF9C4" />
 
     <Space
         android:layout_width="match_parent"
@@ -97,8 +104,10 @@
         android:layout_weight="2"
         android:background="#DCEDC8"
         android:text="지난 거래 내역"
+        android:textColor="@color/black"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:backgroundTint="#DCEDC8" />
 
     <Space
         android:layout_width="match_parent"
@@ -111,8 +120,13 @@
         android:layout_weight="2"
         android:background="#B2BBDEFB"
         android:text="모임 참여 내역"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/black"
+        android:textColorHint="@color/black"
+        android:textColorLink="@color/black"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:backgroundTint="#B2BBDEFB" />
 
     <Space
         android:layout_width="match_parent"
@@ -123,8 +137,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="#31FDFDFD"
+        android:background="#DCEDC8"
         android:text="설정"
-        android:textStyle="bold" />
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:backgroundTint="#DCEDC8" />
 
 </LinearLayout>
